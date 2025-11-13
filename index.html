@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tempetare Converter</title>
+    <link rel="stylesheet" href="tailwind.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        html {
+            
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            color: white;
+            cursor: none;
+            
+        }
+        .temperature-converter-container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3)
+            filter: blur(0px);
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            gap: 15px;
+            
+        }
+        .temperature-converter-container:hover {
+            transform: scale(1.05);
+            transition: all 0.3s ease-in-out;
+        }
+        .box-tittle {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        #background-video { /*Setting the background video*/
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+            overflow: hidden;
+        }
+        #background-video video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            
+
+        }
+        #results {
+            margin-top: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .from-section, .to-section, .input-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            gap: 10px;
+            
+        }
+        #option, #options2, {
+            border-radius: 5px;
+        }
+        input[type="number"], select { /*This is how we use css in our input and select*/
+            border-radius: 6px;
+            padding: 7px;
+            width: 170px;
+            border: 1px solid #ccc;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .the-cursor {
+            z-index: 100; /*This make this class be on the top */
+            position: fixed; /*This make the cursor be over everything*/
+            pointer-events: none;
+            top: 0%;
+            left: 0%;
+            width: 20px; /*the size of the cursor*/
+            height: 20px;
+            border: 2px solid #d4af37; /*The border of the cursor, i almost forgot this part */
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.7);
+            border-radius: 50%; /*This make the cursor just be a circle lmao */
+            transform: translate(-50%, -50%); /*This make the cursor be in the center of the mouse*/
+        }
+
+
+    </style>
+</head>
+<body>
+    <script src="index.js" defer></script>
+    <div id="background-video">
+        <video src="waterbackground.mp4" autoplay loop muted playsinline></video>
+    </div>
+    <!--Hello, this is the biggest box container-->
+    <div class="temperature-converter-container">
+        <!--The tittle of the box-->
+        <h1 class="box-tittle">TEMPERATURE CONVERTER</h1>
+        <!--Input section, the user has to enter the number-->
+        <div class="input-section">
+        <label for="input">Enter Temperature:</label>
+        <input type="number" id="input" placeholder="Type your temperature here">
+        </div>
+        <!--From section, choose the first option-->
+        <div class="from-section">
+            <label for="output">Convert From:</label>
+            <select name="options" id="option">
+                <option value="celsius">Celsius (°C)</option>
+                <option value="kelvin">Kelvin (°K)</option>
+                <option value="farenheit">Fahrenheit (°F)</option>
+            </select>
+        </div>
+        <!--To section, the result that u wanna-->
+        <div class="to-section">
+            <label for="to">Convert To:</label>
+            <select name="options2" id="options2">
+                <option value="celsius">Celsius (°C)</option>
+                <option value="kelvin">kelvin (°K)</option>
+                <option value="farenheit">Fahrenheit (°F)</option>
+                
+            </select>
+        </div>
+        <!--Well well , this is gonna be the result-->
+        <div id="results">
+            <p>Results:   <span id="final-temperature"> 0.00 °C</span></p>
+        </div>
+
+        </div>
+
+    </div>
+    <!--THE CURSOR!!-->
+    <div class="the-cursor"></div>
+    <!-- The End!!! -->
+    
+</body>
+</html>
